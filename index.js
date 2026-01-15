@@ -12,10 +12,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 try {
-  await mongoose.connect('mongodb://127.0.0.1:27017/gymMembership');
-  console.log('mongodb is connected..');
+  await mongoose.connect(process.env.MONGODB_URI);
+  console.log(`mongodb is connected (${process.env.MONGODB_URI}) ..`);
 } catch (error) {
-  console.log('failed to connect to mongodb..');
+  console.log(`failed to connect to mongodb (${process.env.MONGODB_URI})..`, error);
 }
 
 const app = express()
